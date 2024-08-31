@@ -1,7 +1,6 @@
 import { Application } from "../models/application.model.js";
 import { Job } from "../models/job.model.js";
 
-//applying for job
 export const applyJob = async (req, res) => {
     try {
         const userId = req.id;
@@ -46,7 +45,6 @@ export const applyJob = async (req, res) => {
         console.log(error);
     }
 };
-// get information about jobs applied
 export const getAppliedJobs = async (req,res) => {
     try {
         const userId = req.id;
@@ -58,14 +56,12 @@ export const getAppliedJobs = async (req,res) => {
                 options:{sort:{createdAt:-1}},
             }
         });
-        //if application not found
         if(!application){
             return res.status(404).json({
                 message:"No Applications",
                 success:false
             })
         };
-        //application found
         return res.status(200).json({
             application,
             success:true
@@ -74,10 +70,9 @@ export const getAppliedJobs = async (req,res) => {
         console.log(error);
     }
 }
-// admin can check number of applicants applied for a particular job
+// admin dekhega kitna user ne apply kiya hai
 export const getApplicants = async (req,res) => {
     try {
-        //get job by id in increasing order
         const jobId = req.params.id;
         const job = await Job.findById(jobId).populate({
             path:'applications',
@@ -86,7 +81,6 @@ export const getApplicants = async (req,res) => {
                 path:'applicant'
             }
         });
-        //if job not found
         if(!job){
             return res.status(404).json({
                 message:'Job not found.',
@@ -101,7 +95,6 @@ export const getApplicants = async (req,res) => {
         console.log(error);
     }
 }
-//updating status about the job
 export const updateStatus = async (req,res) => {
     try {
         const {status} = req.body;

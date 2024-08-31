@@ -1,6 +1,6 @@
 import { Job } from "../models/job.model.js";
 
-//creating a job by specific company 
+// admin post krega job
 export const postJob = async (req, res) => {
     try {
         const { title, description, requirements, salary, location, jobType, experience, position, companyId } = req.body;
@@ -8,7 +8,7 @@ export const postJob = async (req, res) => {
 
         if (!title || !description || !requirements || !salary || !location || !jobType || !experience || !position || !companyId) {
             return res.status(400).json({
-                message: "Something is missing.",
+                message: "Somethin is missing.",
                 success: false
             })
         };
@@ -33,15 +33,14 @@ export const postJob = async (req, res) => {
         console.log(error);
     }
 }
-
-//getting the job
+// student k liye
 export const getAllJobs = async (req, res) => {
     try {
         const keyword = req.query.keyword || "";
         const query = {
             $or: [
                 { title: { $regex: keyword, $options: "i" } },
-                { description: { $regex: keyword, $options: "i" } }, //i == casesensitive
+                { description: { $regex: keyword, $options: "i" } },
             ]
         };
         const jobs = await Job.find(query).populate({
@@ -61,12 +60,13 @@ export const getAllJobs = async (req, res) => {
         console.log(error);
     }
 }
-
-//Finding job using jobId
+// student
 export const getJobById = async (req, res) => {
     try {
         const jobId = req.params.id;
-        const job = await Job.findById(jobId);
+        const job = await Job.findById(jobId).populate({
+            path:"applications"
+        });
         if (!job) {
             return res.status(404).json({
                 message: "Jobs not found.",
@@ -78,7 +78,7 @@ export const getJobById = async (req, res) => {
         console.log(error);
     }
 }
-//jobs uploaded by admin using adminId
+// admin kitne job create kra hai abhi tk
 export const getAdminJobs = async (req, res) => {
     try {
         const adminId = req.id;
