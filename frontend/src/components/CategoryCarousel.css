@@ -1,0 +1,20 @@
+/* CategoryCarousel.css */
+.carousel-item {
+    padding: 0 15px; /* Space out items to avoid congestion */
+}
+
+.carousel-item button {
+    display: block; /* Make sure the button takes up full width of its container */
+    padding: 12px 24px; /* Adjust padding for button size */
+    font-size: 1rem; /* Font size for better readability */
+    margin: 10px auto; /* Center the button and add margin for spacing */
+    background-color: #6A38C2; /* Background color for buttons */
+    color: #ffffff; /* Text color for buttons */
+    border: 2px solid #6A38C2; /* Border color matching the background */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background and hover effect */
+}
+
+.carousel-item button:hover {
+    background-color: #5f32ad; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}

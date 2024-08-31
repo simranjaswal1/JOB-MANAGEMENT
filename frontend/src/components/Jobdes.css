@@ -1,0 +1,76 @@
+/* Job.css */
+@keyframes sparkle {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; }
+  }
+  
+  .sparkles {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(153, 102, 255, 0.8), rgba(102, 204, 255, 0.8));
+    border-radius: 8px;
+  }
+  
+  .sparkles .sparkle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    z-index: 1;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+  }
+  
+  .sparkles:hover .sparkle {
+    animation: sparkle 2s ease-out infinite;
+  }
+  
+  .hover-effect {
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  
+  .hover-effect:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, rgba(102, 204, 255, 0.8), rgba(153, 102, 255, 0.8));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .arrow-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 10;
+    width: 50px;
+    height: 50px;
+    animation: moveArrow 5s infinite;
+  }
+  
+  .arrow {
+    font-size: 2rem;
+    color: #7209b7;
+    transition: color 0.3s ease;
+  }
+  
+  .arrow:hover {
+    color: #5f32ad;
+  }
+  
+  @keyframes moveArrow {
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(-50px, -50px);
+    }
+    50% {
+      transform: translate(50px, -50px);
+    }
+    75% {
+      transform: translate(50px, 50px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
