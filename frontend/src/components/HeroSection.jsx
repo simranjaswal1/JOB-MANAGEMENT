@@ -71,10 +71,10 @@ const HeroSection = () => {
                         type="text"
                         placeholder='Find your dream jobs'
                         onChange={(e) => setQuery(e.target.value)}
-                        className='outline-none border-none w-full bg-transparent text-gray-800 placeholder-gray-400'
+                        className='outline-none border-none w-full'
                     />
-                    <Button onClick={searchJobHandler} className="rounded-r-full bg-[#6A38C2] border-none">
-                        <Search className='h-5 w-5 text-white' />
+                    <Button onClick={searchJobHandler} className="rounded-r-full bg-[#6A38C2]">
+                        <Search className='h-5 w-5' />
                     </Button>
                 </motion.div>
             </motion.div>
