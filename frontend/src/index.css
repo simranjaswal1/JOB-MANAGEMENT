@@ -1,91 +1,90 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
 
-  @layer base {
-    :root {
-      --background: 0 0% 100%;
-      --foreground: 222.2 84% 4.9%;
+@layer base {
+  :root {
+    /* Light Theme Colors */
+    --background: #000000; /* Black background */
+    --foreground: #FF0000; /* Red foreground */
+    
+    --card: #000000; /* Black card background */
+    --card-foreground: #333333; /* Dark gray text on card */
 
-      --card: 0 0% 100%;
-      --card-foreground: 222.2 84% 4.9%;
+    --popover: #000000; /* Black popover background */
+    --popover-foreground: #FF0000; /* Red text in popover */
 
-      --popover: 0 0% 100%;
-      --popover-foreground: 222.2 84% 4.9%;
+    --primary: #FF0000; /* Red primary color */
+    --primary-foreground: #FFFFFF; /* White text on red background */
 
-      --primary: 222.2 47.4% 11.2%;
-      --primary-foreground: 210 40% 98%;
+    --secondary: #FF4500; /* Orange-red accent */
+    --secondary-foreground: #FFFFFF; /* White text for secondary */
 
-      --secondary: 210 40% 96.1%;
-      --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: #333333; /* Dark gray for muted text */
+    --muted-foreground: #FFFFFF; /* White muted foreground */
 
-      --muted: 210 40% 96.1%;
-      --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: #FF0000; /* Red accent */
+    --accent-foreground: #FFFFFF; /* White accent foreground */
 
-      --accent: 210 40% 96.1%;
-      --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: #DC2626; /* Darker red for errors */
+    --destructive-foreground: #FFFFFF; /* White text for errors */
 
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 210 40% 98%;
+    --border: #444444; /* Darker border color */
+    --border-white: #FFFFFF; /* White border color */
+    --input: #333333; /* Dark gray input background */
+    --ring: #FF0000; /* Red ring color */
 
-      --border: 214.3 31.8% 91.4%;
-      --input: 214.3 31.8% 91.4%;
-      --ring: 222.2 84% 4.9%;
-
-      --radius: 0.5rem;
-    }
-
-    .dark {
-      --background: 222.2 84% 4.9%;
-      --foreground: 210 40% 98%;
-
-      --card: 222.2 84% 4.9%;
-      --card-foreground: 210 40% 98%;
-
-      --popover: 222.2 84% 4.9%;
-      --popover-foreground: 210 40% 98%;
-
-      --primary: 210 40% 98%;
-      --primary-foreground: 222.2 47.4% 11.2%;
-
-      --secondary: 217.2 32.6% 17.5%;
-      --secondary-foreground: 210 40% 98%;
-
-      --muted: 217.2 32.6% 17.5%;
-      --muted-foreground: 215 20.2% 65.1%;
-
-      --accent: 217.2 32.6% 17.5%;
-      --accent-foreground: 210 40% 98%;
-
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 210 40% 98%;
-
-      --border: 217.2 32.6% 17.5%;
-      --input: 217.2 32.6% 17.5%;
-      --ring: 212.7 26.8% 83.9%;
-    }
+    --radius: 0.5rem; /* Border radius */
   }
-/* Add this to your global CSS file or within a styled component */
-@keyframes sparkle {
-  0% { transform: scale(0.5); opacity: 1; }
-  100% { transform: scale(1.5); opacity: 0; }
-}
 
-.sparkle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: radial-gradient(circle, white 0%, transparent 70%);
-  border-radius: 50%;
-  animation: sparkle 0.8s ease-out forwards;
-  pointer-events: none;
-}
+  .dark {
+    /* Dark Theme Colors */
+    --background: #000000; /* Black background */
+    --foreground: #FF0000; /* Red foreground */
 
-  @layer base {
-    * {
-      @apply border-border;
-    }
-    body {
-      @apply bg-background text-foreground;
-    }
+    --card: #1F2937; /* Darker card background */
+    --card-foreground: #FF0000; /* Red text on card */
+
+    --popover: #1F2937; /* Dark popover background */
+    --popover-foreground: #FF0000; /* Red text in popover */
+
+    --primary: #FF0000; /* Red primary color */
+    --primary-foreground: #FFFFFF; /* White text on red background */
+
+    --secondary: #FF4500; /* Orange-red accent */
+    --secondary-foreground: #FFFFFF; /* White text for secondary */
+
+    --muted: #333333; /* Dark gray for muted text */
+    --muted-foreground: #FFFFFF; /* White muted foreground */
+
+    --accent: #FF0000; /* Red accent */
+    --accent-foreground: #FFFFFF; /* White accent foreground */
+
+    --destructive: #DC2626; /* Darker red for errors */
+    --destructive-foreground: #FFFFFF; /* White text for errors */
+
+    --border: #444444; /* Darker border color */
+    --border-white: #FFFFFF; /* White border color */
+    --input: #333333; /* Dark gray input background */
+    --ring: #FF0000; /* Red ring color */
   }
+
+  /* Apply global styles */
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Button Styles */
+  .button {
+    @apply bg-black border border-border-white text-red-500 rounded-lg px-4 py-2 font-semibold transition-colors duration-300 ease-in-out;
+  }
+  .button:hover {
+    @apply bg-gray-800;
+  }
+  .button:disabled {
+    @apply bg-gray-600 text-gray-400 border-gray-500 cursor-not-allowed;
+  }
+}
