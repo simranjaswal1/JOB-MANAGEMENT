@@ -63,7 +63,7 @@ const HeroSection = () => {
                     Effortlessly manage job postings, applications, and candidate interactions with our comprehensive job management platform
                 </motion.p>
                 <motion.div
-                    className='flex w-[40%] shadow-lg border border-gray-200 pl-3 rounded-full items-center gap-4 mx-auto'
+                    className='flex w-[40%] shadow-lg border border-gray-200 rounded-full items-center mx-auto'
                     variants={itemVariants}
                     transition={{ duration: 4, ease: "easeOut" }} // Slower and smoother
                 >
@@ -71,10 +71,10 @@ const HeroSection = () => {
                         type="text"
                         placeholder='Find your dream jobs'
                         onChange={(e) => setQuery(e.target.value)}
-                        className='outline-none border-none w-full'
+                        className='outline-none border-none w-full bg-transparent text-gray-800 placeholder-gray-400 rounded-l-full px-4 py-2'
                     />
-                    <Button onClick={searchJobHandler} className="rounded-r-full bg-[#6A38C2]">
-                        <Search className='h-5 w-5' />
+                    <Button onClick={searchJobHandler} className="rounded-r-full bg-[#6A38C2] border-none">
+                        <Search className='h-5 w-5 text-white' />
                     </Button>
                 </motion.div>
             </motion.div>

@@ -7,15 +7,12 @@ import { APPLICATION_API_END_POINT, JOB_API_END_POINT } from '@/utils/constant';
 import { setSingleJob } from '@/redux/jobSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'sonner';
-import './Jobdes.css';  // Import the CSS file
+//import './Jobdes.css';  // Import the CSS file
 
 const JobDescription = () => {
     const { singleJob } = useSelector((store) => store.job);
     const { user } = useSelector((store) => store.auth);
-    const isInitiallyApplied = singleJob?.applications?.some(
-        (application) => application.applicant === user?._id
-    ) || false;
-    const [isApplied, setIsApplied] = useState(isInitiallyApplied);
+    const [isApplied, setIsApplied] = useState(false);
     const [sparkles, setSparkles] = useState([]);
 
     const params = useParams();
@@ -39,7 +36,7 @@ const JobDescription = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error(error.response.data.message);
+            toast.error(error.response?.data?.message || 'Something went wrong');
         }
     };
 
@@ -59,6 +56,7 @@ const JobDescription = () => {
                 }
             } catch (error) {
                 console.log(error);
+                toast.error('Failed to fetch job details');
             }
         };
         fetchSingleJob();
@@ -80,7 +78,7 @@ const JobDescription = () => {
     };
 
     return (
-        <div className='relative max-w-7xl mx-auto my-10 p-6 gradient-bg rounded-lg shadow-2xl overflow-hidden sparkles' onMouseMove={handleMouseMove}>
+        <div className='relative max-w-7xl mx-auto my-10 p-6 bg-gradient-to-r from-gray-800 to-black rounded-lg shadow-2xl overflow-hidden sparkles' onMouseMove={handleMouseMove}>
             {sparkles.map((sparkle, index) => (
                 <div
                     key={index}
@@ -115,7 +113,7 @@ const JobDescription = () => {
                     className={`relative rounded-full px-6 py-3 text-lg font-bold text-white transition-transform duration-300 ease-in-out ${
                         isApplied
                             ? 'bg-gray-600 cursor-not-allowed'
-                            : 'bg-gradient-to-r from-purple-600 to-indigo-600 hover-effect'
+                            : 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:scale-105'
                     }`}
                 >
                     {isApplied ? 'Already Applied' : 'Apply Now'}
@@ -125,30 +123,22 @@ const JobDescription = () => {
                 Job Description
             </h2>
             <div className='my-4 text-white'>
-                <h3 className='font-semibold text-lg my-2'>
-                    Role: <span className='pl-4 font-normal'>{singleJob?.title}</span>
-                </h3>
-                <h3 className='font-semibold text-lg my-2'>
-                    Location: <span className='pl-4 font-normal'>{singleJob?.location}</span>
-                </h3>
-                <h3 className='font-semibold text-lg my-2'>
-                    Description: <span className='pl-4 font-normal'>{singleJob?.description}</span>
-                </h3>
-                <h3 className='font-semibold text-lg my-2'>
-                    Experience: <span className='pl-4 font-normal'>{singleJob?.experience} yrs</span>
-                </h3>
-                <h3 className='font-semibold text-lg my-2'>
-                    Salary: <span className='pl-4 font-normal'>{singleJob?.salary} LPA</span>
-                </h3>
-                <h3 className='font-semibold text-lg my-2'>
-                    Total Applicants: <span className='pl-4 font-normal'>{singleJob?.applications?.length}</span>
-                </h3>
-                <h3 className='font-semibold text-lg my-2'>
-                    Posted Date: <span className='pl-4 font-normal'>{singleJob?.createdAt.split('T')[0]}</span>
-                </h3>
+                <DetailRow label="Role" value={singleJob?.title} />
+                <DetailRow label="Location" value={singleJob?.location} />
+                <DetailRow label="Description" value={singleJob?.description} />
+                <DetailRow label="Experience" value={`${singleJob?.experience} yrs`} />
+                <DetailRow label="Salary" value={`${singleJob?.salary} LPA`} />
+                <DetailRow label="Total Applicants" value={singleJob?.applications?.length} />
+                <DetailRow label="Posted Date" value={new Date(singleJob?.createdAt).toLocaleDateString()} />
             </div>
         </div>
     );
 };
+
+const DetailRow = ({ label, value }) => (
+    <h3 className='font-semibold text-lg my-2'>
+        {label}: <span className='font-normal'>{value}</span>
+    </h3>
+);
 
 export default JobDescription;
