@@ -11,8 +11,8 @@
     --card:  /* Black card background */
     --card-foreground: /* Dark gray text on card */
 
-    --popover: #000000; /* Black popover background */
-    --popover-foreground:rgb(4, 100, 133); /* Red text in popover */
+    --popover: #000000; 
+    --popover-foreground:rgb(4, 100, 133); 
 
     --primary: #164680; /* Red primary color */
     --primary-foreground: #6A9C89; /* White text on red background */

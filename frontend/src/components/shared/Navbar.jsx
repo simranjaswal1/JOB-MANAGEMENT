@@ -28,6 +28,7 @@ const Navbar = () => {
             toast.error(error.response.data.message);
         }
     }
+
     return (
         <div className='bg-white'>
             <div className='flex items-center justify-between mx-auto max-w-7xl h-16'>
@@ -39,6 +40,7 @@ const Navbar = () => {
                         {
                             user && user.role === 'recruiter' ? (
                                 <>
+                                    <li><Link to="/">Home</Link></li>
                                     <li><Link to="/admin/companies">Companies</Link></li>
                                     <li><Link to="/admin/jobs">Jobs</Link></li>
                                 </>
@@ -50,8 +52,6 @@ const Navbar = () => {
                                 </>
                             )
                         }
-
-
                     </ul>
                     {
                         !user ? (
@@ -86,7 +86,6 @@ const Navbar = () => {
                                                     </div>
                                                 )
                                             }
-
                                             <div className='flex w-fit items-center gap-2 cursor-pointer'>
                                                 <LogOut />
                                                 <Button onClick={logoutHandler} variant="link">Logout</Button>
@@ -97,10 +96,8 @@ const Navbar = () => {
                             </Popover>
                         )
                     }
-
                 </div>
             </div>
-
         </div>
     )
 }
