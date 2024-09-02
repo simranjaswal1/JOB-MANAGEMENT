@@ -45,27 +45,27 @@ const HeroSection = () => {
                 <motion.span
                     className='mx-auto px-4 py-2 rounded-full bg-gray-100 text-[#F83002] font-medium'
                     variants={itemVariants}
-                    transition={{ duration: 2.5, ease: "easeOut" }} // Smooth easing
+                    transition={{ duration: 2.5 }} // Smooth easing
                 >
                     A platform for your dreams
                 </motion.span>
                 <motion.h1
                     className='text-5xl font-bold'
                     variants={itemVariants}
-                    transition={{ duration: 3, ease: "easeOut" }} // More pronounced animation
+                    transition={{ duration: 3 }} // More pronounced animation
                 >
                     Search, Apply & <br /> Get Your <span className='text-[#6A38C2]'>Dream Jobs</span>
                 </motion.h1>
                 <motion.p
                     variants={itemVariants}
-                    transition={{ duration: 3.5, ease: "easeOut" }} // Extended duration
+                    transition={{ duration: 3.5 }} // Extended duration
                 >
                     Effortlessly manage job postings, applications, and candidate interactions with our comprehensive job management platform
                 </motion.p>
                 <motion.div
                     className='flex w-[40%] shadow-lg border border-gray-200 rounded-full items-center mx-auto'
                     variants={itemVariants}
-                    transition={{ duration: 4, ease: "easeOut" }} // Slower and smoother
+                    transition={{ duration: 4}} // Slower and smoother
                 >
                     <input
                         type="text"
@@ -73,7 +73,7 @@ const HeroSection = () => {
                         onChange={(e) => setQuery(e.target.value)}
                         className='outline-none border-none w-full bg-transparent text-gray-800 placeholder-gray-400 rounded-l-full px-4 py-2'
                     />
-                    <Button onClick={searchJobHandler} className="rounded-r-full bg-[#6A38C2] border-none">
+                    <Button onClick={searchJobHandler} className="rounded-r-full bg-[#224fa1] border-none">
                         <Search className='h-5 w-5 text-white' />
                     </Button>
                 </motion.div>
