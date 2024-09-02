@@ -25,7 +25,7 @@ const LatestJobCards = ({ job }) => {
         <motion.div
             onClick={() => navigate(`/description/${job._id}`)}
             className='p-5 rounded-md shadow-xl bg-white border border-gray-100 cursor-pointer relative overflow-hidden'
-            whileHover={{ scale: 1.05, rotateY: 10, rotateX: 10, rotateZ: 5 }}
+            whileHover={{ scale: 1.05}}
             whileTap={{ scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             onMouseMove={handleHover}

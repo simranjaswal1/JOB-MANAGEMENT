@@ -16,20 +16,20 @@ module.exports = {
         "card-foreground": "var(--card-foreground)",
         popover: "var(--popover)",
         "popover-foreground": "var(--popover-foreground)",
-        primary: "#FF0000", // Red primary color
-        "primary-foreground": "#FFFFFF",
+        primary: "#224fa1", // suttle blue
+        "primary-foreground": "#6A9C89", //light suttle green
         secondary: "#FF4500", // Orange-red accent
-        "secondary-foreground": "#FFFFFF",
-        muted: "#333333", // Dark gray
-        "muted-foreground": "#FFFFFF",
-        accent: "#FF0000", // Red accent
-        "accent-foreground": "#FFFFFF",
-        destructive: "#DC2626", // Darker red for errors
-        "destructive-foreground": "#FFFFFF",
-        border: "#444444", // Darker border color
-        "border-white": "#FFFFFF", // Custom white border color
-        input: "#333333", // Dark gray input background
-        ring: "#FF0000", // Red ring color
+        "secondary-foreground": "#6A9C89", //light suttle green
+        muted: "#ffff", // Dark gray
+        "muted-foreground": "#6A9C89", //suttle dark blue
+        accent: "##224fa1", // light blue
+        "accent-foreground": "#6A9C89", //suttle green
+        destructive: "#DC2626", // orange for errors
+        "destructive-foreground": "#6A9C89", // green
+        border: "#205375", // blue
+        "border-white": "#6A9C89", // suttle green
+        input: "#053B50", // Dark gray input background
+        ring: "##224fa1", // light blue
       },
       borderRadius: {
         lg: "var(--radius)",
