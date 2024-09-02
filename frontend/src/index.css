@@ -49,7 +49,7 @@
     --popover-foreground: #224fa1; /* Red text in popover */
 
     --primary: #224fa1; /* Red primary color */
-    --primary-foreground: #6A9C89; /* White text on red background */
+    --primary-foreground: #6a9c89; /* White text on red background */
 
     --secondary: #064693; /* Orange-red accent */
     --secondary-foreground: #6A9C89; /* White text for secondary */
@@ -101,14 +101,19 @@
   height: 6px;
   background: radial-gradient(circle, white 0%, transparent 70%);
   border-radius: 50%;
-  animation: sparkle 0.8s ease-out forwards;
+  animation: sparkle 0.3s ease-out forwards;
   pointer-events: none;
 }
 .bg-white{
-  background-color: #eeeeeef0;
+  background-image: linear-gradient(to left, #82b3a072 , #91cefc6a);
   box-shadow: 3px 4px 10px grey;
   font-family:Arial, Helvetica, sans-serif;
   font-size: 16px;
+}
+
+.bg-white:hover{
+  box-shadow: 5px 6px 20px grey;
+  transition: .2s;
 }
 
 .border-t{
@@ -154,4 +159,13 @@
   background-color: #224fa1;
   background-color: #f2f2f2;
   box-shadow: 10px 10px 20px grey;
+}
+
+input{
+  box-shadow: 10px 10px 20px grey;
+}
+
+input:hover{
+  color: grey;
+  box-shadow: 12px 12px 22px grey;
 }

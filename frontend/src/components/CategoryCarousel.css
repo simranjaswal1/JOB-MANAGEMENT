@@ -10,7 +10,7 @@
     margin: 10px auto; /* Center the button and add margin for spacing */
     background-color: #6A38C2; /* Background color for buttons */
     color: #ffffff; /* Text color for buttons */
-    border: 2px solid #6A38C2; /* Border color matching the background */
+    border: 2px solid #6a38c2; /* Border color matching the background */
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background and hover effect */
 }
 
