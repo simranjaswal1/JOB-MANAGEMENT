@@ -1,4 +1,4 @@
-/* @type {import('tailwindcss').Config} */
+/* tailwind.config.js */
 module.exports = {
   darkMode: ["class"], // Enable dark mode using a class
   content: [
@@ -42,4 +42,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

@@ -8,7 +8,7 @@ export const postJob = async (req, res) => {
 
         if (!title || !description || !requirements || !salary || !location || !jobType || !experience || !position || !companyId) {
             return res.status(400).json({
-                message: "Somethin is missing.",
+                message: "Something is missing.",
                 success: false
             })
         };
@@ -100,3 +100,33 @@ export const getAdminJobs = async (req, res) => {
         console.log(error);
     }
 }
+
+//-----------------------------------------------------------------------------------------//
+// deleting the job
+
+export const deleteJobById = async (req, res) => {
+    try {
+        const jobId = req.params.id; // Job ID from the request params
+
+        // Attempt to find and delete the job
+        const deletedJob = await Job.findByIdAndDelete(jobId);
+
+        if (!deletedJob) {
+            return res.status(404).json({
+                message: "Job not found.",
+                success: false,
+            });
+        }
+
+        return res.status(200).json({
+            message: "Job deleted successfully.",
+            success: true,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            message: "An error occurred while deleting the job.",
+            success: false,
+        });
+    }
+};

@@ -8,13 +8,23 @@
     padding: 12px 24px; /* Adjust padding for button size */
     font-size: 1rem; /* Font size for better readability */
     margin: 10px auto; /* Center the button and add margin for spacing */
-    background-color: #6A38C2; /* Background color for buttons */
+    
     color: #ffffff; /* Text color for buttons */
-    border: 2px solid #6a38c2; /* Border color matching the background */
-    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background and hover effect */
+    transition: none; /* Remove transition effects */
+    border: none; /* Remove border for a cleaner look */
 }
 
+/* Remove hover effects */
 .carousel-item button:hover {
-    background-color: #5f32ad; /* Darker shade on hover */
-    transform: scale(1.05); /* Slight zoom effect on hover */
+    
+    color: #ffffff; /* Keep the original text color on hover */
+    transform: none; /* No transform on hover */
+}
+
+
+/* Disabled button styling */
+.carousel-item button:disabled {
+  
+  
+    cursor: not-allowed; /* Change cursor to indicate the button is disabled */
 }

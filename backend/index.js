@@ -40,6 +40,24 @@ app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 
+app.delete('/api/v1/job/:jobId', async (req, res) => {
+    const { jobId } = req.params;
+    const { force } = req.body; // Capture the force flag
+
+    try {
+        if (force) {
+            // Perform forceful deletion logic (e.g., bypass soft delete checks, cascade delete)
+        } else {
+            // Perform standard deletion logic
+        }
+        res.status(200).send({ message: 'Job deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting job:', error);
+        res.status(500).send({ error: 'Failed to delete job' });
+    }
+});
+
+
 
 
 app.listen(PORT,()=>{

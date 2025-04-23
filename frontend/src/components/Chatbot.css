@@ -1,0 +1,152 @@
+/* Chatbot.css */
+.chatbot-container {
+  position: fixed;
+  right: 20px;
+  top: 10%; /* Position it at the top of the screen */
+  transform: translateY(0); /* No need for vertical centering */
+  width: 300px;
+  max-height: 400px;
+  background-color: #fff; /* White background for light mode */
+  border: 1px solid #ddd; /* Lighter border to match login theme */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex; /* Ensure the chatbot is displayed */
+  flex-direction: column;
+  font-family: Arial, sans-serif; /* Match login theme's font */
+}
+
+/* Dark Mode */
+.dark .chatbot-container {
+  background-color: #333; /* Dark background for chatbot */
+  border: 1px solid #555; /* Darker border for dark mode */
+}
+
+/* Chatbox area */
+.chatbox {
+  height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.chatbox p {
+  color: #333; /* Default text color */
+}
+
+.dark .chatbox p {
+  color: white; /* Text color in dark mode */
+}
+
+/* Messages styling */
+.message {
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.message.bot {
+  background-color: #f0f0f0; /* Lighter bot message background */
+  align-self: flex-start;
+}
+
+.message.user {
+  background-color: #4caf50; /* Green for user messages */
+  color: white;
+  align-self: flex-end;
+}
+
+/* Dark Mode Message Styling */
+.dark .message.bot {
+  background-color: #444; /* Darker bot message background */
+  color: white;
+}
+
+.dark .message.user {
+  background-color: #2e7d32; /* Darker green for user messages */
+}
+
+/* Input Container */
+.input-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background-color: #f9f9f9; /* Light background for input area */
+}
+
+.dark .input-container {
+  background-color: #444; /* Dark background for input area in dark mode */
+}
+
+input {
+  width: 180px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: transparent; /* Transparent background */
+  color: #333; /* Default text color */
+}
+
+.dark input {
+  color: white; /* White text color for input in dark mode */
+  border: 1px solid #555; /* Darker border in dark mode */
+}
+
+button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #4caf50; /* Green button */
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Dark Mode Button */
+.dark button {
+  background-color: #388e3c; /* Darker green for the button in dark mode */
+}
+
+.dark button:hover {
+  background-color: #2c6e2f; /* Even darker green on hover */
+}
+
+/* Cross icon for closing the chatbot */
+.chatbot-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+.chatbot-close:hover {
+  color: #f00; /* Red color when hovered */
+}
+
+/* Cute floating icon for toggling chatbot visibility */
+.chatbot-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background-color: #4caf50; /* Same color as the chat user messages */
+  color: white;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 24px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.chatbot-toggle:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Dark Mode Toggle Icon */
+.dark .chatbot-toggle {
+  background-color: #388e3c; /* Darker green for toggle in dark mode */
+}

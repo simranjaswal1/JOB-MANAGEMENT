@@ -1,43 +1,49 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const jobSlice = createSlice({
-    name:"job",
-    initialState:{
-        allJobs:[],
-        allAdminJobs:[],
-        singleJob:null, 
-        searchJobByText:"",
-        allAppliedJobs:[],
-        searchedQuery:"",
+    name: "job",
+    initialState: {
+        allJobs: [], // All jobs that can be filtered
+        allAdminJobs: [],
+        singleJob: null,
+        searchJobByText: "",
+        allAppliedJobs: [],
+        searchedQuery: {
+            query: "", // Job search query (title)
+            location: "" // Location search query
+        },
     },
-    reducers:{
-        // actions
-        setAllJobs:(state,action) => {
+    reducers: {
+        // Actions to set jobs
+        setAllJobs: (state, action) => {
             state.allJobs = action.payload;
         },
-        setSingleJob:(state,action) => {
+        setSingleJob: (state, action) => {
             state.singleJob = action.payload;
         },
-        setAllAdminJobs:(state,action) => {
+        setAllAdminJobs: (state, action) => {
             state.allAdminJobs = action.payload;
         },
-        setSearchJobByText:(state,action) => {
+        setSearchJobByText: (state, action) => {
             state.searchJobByText = action.payload;
         },
-        setAllAppliedJobs:(state,action) => {
+        setAllAppliedJobs: (state, action) => {
             state.allAppliedJobs = action.payload;
         },
-        setSearchedQuery:(state,action) => {
+        setSearchedQuery: (state, action) => {
+            // Store the query and location
             state.searchedQuery = action.payload;
         }
     }
 });
+
 export const {
-    setAllJobs, 
-    setSingleJob, 
+    setAllJobs,
+    setSingleJob,
     setAllAdminJobs,
-    setSearchJobByText, 
+    setSearchJobByText,
     setAllAppliedJobs,
     setSearchedQuery
 } = jobSlice.actions;
+
 export default jobSlice.reducer;

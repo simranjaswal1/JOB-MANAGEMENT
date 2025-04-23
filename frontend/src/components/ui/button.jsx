@@ -9,12 +9,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 hover: text-blue",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: "bg-transparent text-black border-none",  // No background color or hover effect
+        destructive: "bg-destructive text-destructive-foreground",  // Remove hover effect from destructive variant
+        outline: "border border-input bg-background",  // No hover color or background change for outline
+        secondary: "bg-secondary text-secondary-foreground",  // Remove hover effect from secondary variant
+        ghost: "hover:bg-transparent hover:text-accent-foreground", // Remove any hover effect from ghost variant
+        link: "text-primary underline-offset-4 hover:underline", // Keep link hover, but no background color change
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -24,7 +24,7 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "default", // No hover/active color change
       size: "default",
     },
   }
@@ -35,7 +35,7 @@ const Button = React.forwardRef(({ className, variant, size, asChild = false, ..
   const Comp = asChild ? Slot : "button";
   return (
     <Comp
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(buttonVariants({ variant, size, className }))} // No hover/active states
       ref={ref}
       {...props}
     />

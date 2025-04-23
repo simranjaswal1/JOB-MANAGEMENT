@@ -5,22 +5,24 @@ import Job from './Job';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 
-// const jobsArray = [1, 2, 3, 4, 5, 6, 7, 8];
-
 const Jobs = () => {
     const { allJobs, searchedQuery } = useSelector(store => store.job);
     const [filterJobs, setFilterJobs] = useState(allJobs);
 
     useEffect(() => {
         if (searchedQuery) {
+            // Ensure searchedQuery is a string before applying toLowerCase
+            const query = typeof searchedQuery === 'string' ? searchedQuery.toLowerCase() : '';
             const filteredJobs = allJobs.filter((job) => {
-                return job.title.toLowerCase().includes(searchedQuery.toLowerCase()) ||
-                    job.description.toLowerCase().includes(searchedQuery.toLowerCase()) ||
-                    job.location.toLowerCase().includes(searchedQuery.toLowerCase())
-            })
-            setFilterJobs(filteredJobs)
+                return (
+                    job.title.toLowerCase().includes(query) ||
+                    job.description.toLowerCase().includes(query) ||
+                    job.location.toLowerCase().includes(query)
+                );
+            });
+            setFilterJobs(filteredJobs);
         } else {
-            setFilterJobs(allJobs)
+            setFilterJobs(allJobs);
         }
     }, [allJobs, searchedQuery]);
 
@@ -54,10 +56,8 @@ const Jobs = () => {
                     }
                 </div>
             </div>
-
-
         </div>
-    )
+    );
 }
 
-export default Jobs
+export default Jobs;

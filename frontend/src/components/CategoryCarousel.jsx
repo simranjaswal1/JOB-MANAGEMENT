@@ -1,11 +1,11 @@
 import React from 'react';
-import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
-import { Button } from './ui/button';
+import { Carousel, CarouselContent, CarouselItem } from './ui/carousel'; // Ensure these are correctly imported
+import { Button } from './ui/button'; // Ensure this is correctly imported
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setSearchedQuery } from '@/redux/jobSlice';
 import { motion } from 'framer-motion';
-import './CategoryCarousel.css'; // Ensure to import your CSS for additional styling
+import './CategoryCarousel.css'; // Ensure the CSS file is available and correct
 
 // List of job categories
 const categories = [
@@ -32,7 +32,7 @@ const CategoryCarousel = () => {
     };
 
     return (
-        <div className="relative w-full max-w-6xl mx-auto my-20">
+        <div className="relative w-full max-w-6xl mx-auto my-20" style={{ backgroundColor: "#fff9f9" }}> {/* Background set to #fff9f9 */}
             <Carousel className="w-full">
                 <CarouselContent>
                     {
@@ -45,8 +45,8 @@ const CategoryCarousel = () => {
                                 >
                                     <Button
                                         onClick={() => searchJobHandler(cat)}
-                                        variant="outline"
-                                        className="rounded-full text-lg p-4"
+                                        variant="default"  // Default button variant
+                                        className="rounded-full text-lg p-4 bg-transparent text-black border-2 border-black shadow-none"  // Transparent background, black border
                                     >
                                         {cat}
                                     </Button>

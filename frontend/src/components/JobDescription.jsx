@@ -7,13 +7,13 @@ import { APPLICATION_API_END_POINT, JOB_API_END_POINT } from '@/utils/constant';
 import { setSingleJob } from '@/redux/jobSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'sonner';
-//import './Jobdes.css';  // Import the CSS file
+import Footer from './shared/Footer';
+import Navbar from './shared/Navbar';
 
 const JobDescription = () => {
     const { singleJob } = useSelector((store) => store.job);
     const { user } = useSelector((store) => store.auth);
     const [isApplied, setIsApplied] = useState(false);
-    const [sparkles, setSparkles] = useState([]);
 
     const params = useParams();
     const jobId = params.id;
@@ -62,83 +62,57 @@ const JobDescription = () => {
         fetchSingleJob();
     }, [jobId, dispatch, user?._id]);
 
-    const handleMouseMove = (e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        setSparkles((prev) => [
-            ...prev,
-            { x, y, id: Date.now() }
-        ]);
-
-        setTimeout(() => {
-            setSparkles((prev) => prev.filter((s) => s.id !== Date.now()));
-        }, 2000);
-    };
-
     return (
-        <div className='relative max-w-7xl mx-auto my-10 p-6 bg-gradient-to-r from-gray-800 to-black rounded-lg shadow-2xl overflow-hidden sparkles' onMouseMove={handleMouseMove}>
-            {sparkles.map((sparkle, index) => (
-                <div
-                    key={index}
-                    className='sparkle'
-                    style={{
-                        left: `${sparkle.x}px`,
-                        top: `${sparkle.y}px`,
-                        width: `${Math.random() * 10 + 5}px`,
-                        height: `${Math.random() * 10 + 5}px`,
-                        animationDuration: `${Math.random() * 1 + 1}s`
-                    }}
-                />
-            ))}
-            <div className='flex items-center justify-between'>
-                <div>
-                    <h1 className='font-extrabold text-3xl text-white mb-2'>{singleJob?.title}</h1>
-                    <div className='flex items-center gap-2 mt-4'>
-                        <Badge className='bg-blue-200 text-blue-800 font-semibold shadow-lg' variant="ghost">
-                            {singleJob?.position} Positions
-                        </Badge>
-                        <Badge className='bg-red-200 text-red-800 font-semibold shadow-lg' variant="ghost">
-                            {singleJob?.jobType}
-                        </Badge>
-                        <Badge className='bg-purple-200 text-purple-800 font-semibold shadow-lg' variant="ghost">
-                            {singleJob?.salary} LPA
-                        </Badge>
+        <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow p-6 max-w-4xl mx-auto my-10 bg-white rounded-lg shadow-xl border border-gray-200">
+                <div className="flex items-center justify-between mb-6">
+                    <div>
+                        <h1 className="font-bold text-2xl text-gray-800">{singleJob?.title}</h1>
+                        <div className="flex items-center gap-2 mt-4">
+                            <Badge className="text-blue-700 font-bold" variant="ghost">
+                                {singleJob?.position} Positions
+                            </Badge>
+                            <Badge className="text-red-600 font-bold" variant="ghost">
+                                {singleJob?.jobType}
+                            </Badge>
+                            <Badge className="text-purple-700 font-bold" variant="ghost">
+                                {singleJob?.salary} LPA
+                            </Badge>
+                        </div>
                     </div>
+                    <Button
+                        onClick={isApplied ? null : applyJobHandler}
+                        disabled={isApplied}
+                        className={`rounded-full px-6 py-3 text-lg font-bold transition-transform duration-300 ease-in-out ${
+                            isApplied
+                                ? 'bg-gray-400 text-white cursor-not-allowed'
+                                : 'bg-green-600 text-white hover:scale-105'
+                        }`}
+                    >
+                        {isApplied ? 'Already Applied' : 'Apply Now'}
+                    </Button>
                 </div>
-                <Button
-                    onClick={isApplied ? null : applyJobHandler}
-                    disabled={isApplied}
-                    className={`relative rounded-full px-6 py-3 text-lg font-bold text-white transition-transform duration-300 ease-in-out ${
-                        isApplied
-                            ? 'bg-gray-600 cursor-not-allowed'
-                            : 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:scale-105'
-                    }`}
-                >
-                    {isApplied ? 'Already Applied' : 'Apply Now'}
-                </Button>
-            </div>
-            <h2 className='border-b-2 border-b-gray-300 text-xl font-semibold text-white py-4 mt-6'>
-                Job Description
-            </h2>
-            <div className='my-4 text-white'>
-                <DetailRow label="Role" value={singleJob?.title} />
-                <DetailRow label="Location" value={singleJob?.location} />
-                <DetailRow label="Description" value={singleJob?.description} />
-                <DetailRow label="Experience" value={`${singleJob?.experience} yrs`} />
-                <DetailRow label="Salary" value={`${singleJob?.salary} LPA`} />
-                <DetailRow label="Total Applicants" value={singleJob?.applications?.length} />
-                <DetailRow label="Posted Date" value={new Date(singleJob?.createdAt).toLocaleDateString()} />
-            </div>
+                <h2 className="text-lg font-semibold text-gray-700 mb-4">Job Description</h2>
+                <div className="space-y-3">
+                    <DetailRow label="Role" value={singleJob?.title} />
+                    <DetailRow label="Location" value={singleJob?.location} />
+                    <DetailRow label="Description" value={singleJob?.description} />
+                    <DetailRow label="Experience" value={`${singleJob?.experience} yrs`} />
+                    <DetailRow label="Salary" value={`${singleJob?.salary} LPA`} />
+                    <DetailRow label="Total Applicants" value={singleJob?.applications?.length} />
+                    <DetailRow label="Posted Date" value={new Date(singleJob?.createdAt).toLocaleDateString()} />
+                </div>
+            </main>
+            <Footer />
         </div>
     );
 };
 
 const DetailRow = ({ label, value }) => (
-    <h3 className='font-semibold text-lg my-2'>
-        {label}: <span className='font-normal'>{value}</span>
-    </h3>
+    <div className="text-sm text-gray-600">
+        <span className="font-semibold">{label}:</span> {value}
+    </div>
 );
 
 export default JobDescription;
